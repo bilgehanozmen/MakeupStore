@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MakeupStore.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MakeupStore"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:Views="clr-namespace:MakeupStore.Views"
+    Shell.TabBarBackgroundColor="{StaticResource Primary}"
+    Shell.TabBarTitleColor="{StaticResource Secondary}"
+
+    Shell.FlyoutBehavior="Disabled">
+
+    <Shell.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="{StaticResource Primary}"/>
+    </Shell.Behaviors>
+
+    <!--<ShellContent
+                Title="Glamora"
+                ContentTemplate="{DataTemplate local:MainPage}"
+                Route="MainPage"/>-->
+    <TabBar>
+        <ShellContent Title="Home"
+                      Icon="home"
+                      ContentTemplate="{DataTemplate Views:Home}"
+                      Route="Home"/>
+        <ShellContent Title="Category"
+                      Icon="category"
+                      ContentTemplate="{DataTemplate Views:Categories}"
+                      Route="Categories"/>
+        <ShellContent Title="Basket"
+                      Icon="basket"
+                      ContentTemplate="{DataTemplate Views:Basket}"
+                      Route="Basket"/>
+        <ShellContent Title="Favourites"
+                      Icon="heart"
+                      ContentTemplate="{DataTemplate Views:Favourites}"
+                      Route="Favourites"/>
+   
+        <ShellContent Title="Profile"
+                      Icon="profile"
+                      ContentTemplate="{DataTemplate Views:Profile}"
+                      Route="Profile"/>
+
+
+    </TabBar>
+
+
+
+</Shell>
