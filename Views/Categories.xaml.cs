@@ -11,7 +11,8 @@ public partial class Categories : ContentPage
     public Categories()
 	{
         InitializeComponent();
-        CategoryPageViewModel = new CategoryPageViewModel();
+        
+        CategoryPageViewModel = new CategoryPageViewModel(this.Navigation);
 
         BindingContext = CategoryPageViewModel;
 

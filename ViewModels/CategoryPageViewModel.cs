@@ -1,9 +1,14 @@
-﻿using MakeupStore.Models;
+﻿using Android.Content.Res;
+using AndroidX.Navigation;
+using MakeupStore.Models;
+using MakeupStore.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
+using System.Windows.Input;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
@@ -13,12 +18,15 @@ namespace MakeupStore.ViewModels
     {
         public Category SelectedCategory { get; set; }
 
-        public ICommand ItemClicked { get; set; }
-            
+        public ICommand CategoryClick { get; set; }
+
+        public INavigation navigation;
+        
+
         public ObservableCollection<Category> Category { get; set; }
 
 
-        public CategoryPageViewModel()
+        public CategoryPageViewModel(INavigation navigation)
         {
             Category = new ObservableCollection<Category>
             {
@@ -28,7 +36,15 @@ namespace MakeupStore.ViewModels
                 new Category { Id = 4, Name = "Skincare Products", Price = "$10", Description = "Skincare", Image = "skincare.jpg"},
 
             };
-
+            this.navigation = navigation;
+            CategoryClick = new Command<Category>(executecategoryclickcommand);
+        }
+       
+        async void executecategoryclickcommand(Category category)
+        {
+            SelectedCategory = category;
+            await navigation.PushModalAsync(new Detail(this));
+            
         }
         
     }
